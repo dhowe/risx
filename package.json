@@ -1,0 +1,82 @@
+{
+  "name": "risx",
+  "bin": {
+    "mycli": "bin/mycli/index.js"
+  },
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhowe/risx/"
+  },
+  "author": "Daniel Howe",
+  "bugs": {
+    "url": "https://github.com/dhowe/risx/issues"
+  },
+  "description": "RiScript version 3",
+  "homepage": "https://github.com/dhowe/risx/",
+  "keywords": [],
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "chevrotain": "^11.0.3",
+    "commander": "^10.0.1",
+    "html-entities": "^2.4.0",
+    "mingo": "^6.4.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/eslint-parser": "^7.21.8",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "@babel/preset-env": "^7.22.4",
+    "@babel/register": "^7.21.0",
+    "@karmaniverous/get-dotenv": "^2.4.1",
+    "@types/node": "^20.2.5",
+    "chai": "^4.3.7",
+    "concat-md": "^0.5.1",
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-jsdoc": "^46.1.0",
+    "eslint-plugin-mocha": "^10.1.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "mocha": "^10.2.0",
+    "prettier": "^2.8.8",
+    "release-it": "^15.10.3"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./dist/default/lib/index.js"
+    }
+  },
+  "main": "./lib/index.js",
+  "mocha": {
+    "exclude": [
+      "./dist/**",
+      "./node_modules/**"
+    ],
+    "file": "./test/setup.js",
+    "require": [
+      "@babel/register"
+    ],
+    "spec": "./**/*.test.!(*.*)"
+  },
+  "release-it": {
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": true
+    }
+  },
+  "scripts": {
+    "build": "babel lib -d dist/default/lib --delete-dir-on-start --config-file ./dist/default/.babelrc",
+    "lint": "eslint lib/** bin/**",
+    "prerelease": "npm run test && npm run build",
+    "release": "release-it",
+    "test": "getdotenv -c \"mocha\" -p ./ ./env -d dev -y ./env/dynamic.js"
+  },
+  "type": "module"
+}

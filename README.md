@@ -1,2 +1,1 @@
-# risx
-riscript v3
+Development on RiScript/Rix version 3
