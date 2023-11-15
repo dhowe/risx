@@ -17,5 +17,8 @@
   "[markdown]": {
     "editor.wordWrap": "bounded"
   },
-  "typescript.format.enable": false
+  "typescript.format.enable": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }

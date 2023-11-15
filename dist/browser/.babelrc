@@ -1,0 +1,11 @@
+{
+  "targets":{
+    "android": "67",
+    "chrome": "67",
+    "edge": "17",
+    "firefox": "61",
+    "ie": "11",
+    "ios": "11.3",
+    "safari": "11.1"
+  }
+}
